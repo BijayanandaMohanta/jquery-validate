@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>SelfGrowth | Form Validation Generator</title>
+        <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap"
+            rel="stylesheet">
+
+        <!-- Favicon -->
+        <meta name="robots"
+            content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
+        <link rel="icon" type="image/png" sizes="56x56"
+            href="https://selfgrowth.space/admin/images/66898c4fc667a.png">
+        <meta property="og:type" content="website">
+        <meta property="og:title"
+            content="Form Validation Generator | Self Growth (selfgrowth.space)">
+        <meta property="og:description"
+            content="Create customized jQuery validation scripts in seconds! Simplify your form validation process with our intuitive tool, designed for developers of all levels. Enhance user experience and ensure data integrity effortlessly.">
+        <meta property="og:image"
+            content="https://selfgrowth.space/admin/images/resources/670178d67a2b1.jpg">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="website">
+        <meta name="twitter:creator" content="SelfGrowth">
+        <meta name="twitter:title"
+            content="Form Validation Generator | Self Growth (selfgrowth.space)">
+        <meta name="twitter:description"
+            content="Create customized jQuery validation scripts in seconds! Simplify your form validation process with our intuitive tool, designed for developers of all levels. Enhance user experience and ensure data integrity effortlessly.">
+        <meta name="twitter:image"
+            content="https://selfgrowth.space/admin/images/resources/670178d67a2b1.jpg">
+        <style>
+            body{
+                scroll-behavior: smooth;
+            }
+    *{
+        font-family: "Afacad Flux", sans-serif;
+    }
+    kbd{
+        display: inline;
+        font-family: "Afacad Flux",sans-serif;
+        font-size: small;
+    }
+    .form-control:focus {
+ 
+  border-color:#000;
+  outline:0;
+  box-shadow:unset;
+}
+
+.image{
+    width: 100%;
+    height: auto;
+    margin-inline: auto;
+    border-radius: 3px;
+}
+.spinner-border {
+  vertical-align: middle;
+  margin-top: -3px; /* adjust the margin-top to move the spinner up by 2px */
+}
+.main-website {
+  position: absolute;
+  right: 1rem;
+  top: 0;
+  background: #000;
+  padding: .4rem 1rem;
+  border-radius: 0 0 10px 10px;
+  text-decoration: none;
+  color: white;
+}
+.main-website:hover{
+    text-decoration: none;
+    color: #ccc;
+}
+.a2a_full_services .a2a_i {
+  display:inline-block;
+  float:none;
+  width:181px;
+  width:calc(33.334% - 18px);
+  font-family: inherit;
+}
+div.a2a_full_footer a,
+div.a2a_full_footer a:visited {
+  display: none !important;
+}
+</style>
+        <style>
+  /* Dark mode styles */
+  .dark-mode {
+    background-color: #333;
+    color: #fff;
+  }
+
+  
+
+  .dark-mode .text-dark {
+    color: #fff;
+  }
+
+  .dark-mode .btn-secondary {
+    background-color: #555;
+    border-color: #555;
+  }
+
+  .dark-mode .btn-secondary:hover {
+    background-color: #666;
+    border-color: #666;
+  }
+
+  #dark-mode-toggle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 10;
+  border-radius: 50%;
+  padding: 10px 14px;
+}
+
+</style>
+
+        <script async
+            src="https://static.addtoany.com/menu/page.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </head>
+    <body>
+        <div class="container mt-5 pb-4">
+            <!-- Add this to your HTML file -->
+            <button id="dark-mode-toggle" class="btn btn-secondary">
+                <i id="dark-mode-icon" class="bi bi-moon"></i>
+            </button>
+            <a href="https://selfgrowth.space" class="main-website"><i
+                    class="bi bi-arrow-left"></i> Go to main website</a>
+            <div class="sticky-share-btn">
+                <a class="a2a_dd" href="https://www.addtoany.com/share">
+                    <i class="bi bi-badge-ad-fill"></i> Share this site to help
+                    developers.
+                </a>
+                <script>
+                    var a2a_config = a2a_config || {};
+                    a2a_config.url = window.location.href;
+                </script>
+            </div>
+            <h2 class="mb-0 pb-0">Form Validation Generator</h2>
+            <small class="mb-2 d-block">Generate jquery validation script just
+                by pasting your form code.</small>
+
+            <img
+                src="https://selfgrowth.space/admin/images/resources/670178d67a2b1.jpg"
+                alt="Validation tool" class="image mb-2">
+            <div class="alert alert-warning" role="alert">
+                CDN's necessary :
+                <a
+                    href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+                    target="_blank">jquery</a> and <a
+                    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+                    target="_blank">jquery.validate</a>
+
+            </div>
+
+            <div id="alertPlaceholder"></div>
+            <div class="form-group">
+                <label for="formCode">Enter Form Code:</label>
+                <textarea id="formCode" class="form-control"
+                    rows="10"
+                    placeholder="Paste your form tags code"></textarea>
+            </div>
+            <button id="generateScript" class="btn btn-primary">Generate
+                Validation Script</button> <button id="copyScript"
+                class="btn btn-secondary">Copy to Clipboard</button>
+            <div class="form-group mt-4">
+                <label for="validationScript">Generated Validation
+                    Script:</label>
+                <textarea id="validationScript" class="form-control" rows="10"
+                    readonly></textarea>
+            </div>
+
+            <div class="form-group mt-4">
+                <label for="customMethods">Custom Validation Methods:</label>
+                <textarea id="customMethods" class="form-control" rows="5"
+                    readonly></textarea>
+            </div>
+
+            <div class="card p-4 text-dark">
+                <h4>Guide</h4>
+                <p>Best practice while using this tool : make sure to recheck
+                    the selection. <kbd>The selection of form may miss the
+                        $('selector') format so keep that in mind.</kbd>Don't
+                    forget to use the cdn or file in your project required to
+                    work for this validation script like cdn for the
+                    jquery.validation and jquery</p>
+            </div>
+
+        </div>
+        <script>
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const darkModeIcon = document.getElementById('dark-mode-icon');
+          
+            // Load dark mode state from cookies
+            const storedDarkMode = getCookie('darkMode');
+            if (storedDarkMode === 'true') {
+              document.body.classList.add('dark-mode');
+              darkModeIcon.classList.replace('bi-moon', 'bi-sun');
+            }
+          
+            // Toggle dark mode
+            darkModeToggle.addEventListener('click', () => {
+              document.body.classList.toggle('dark-mode');
+              if (document.body.classList.contains('dark-mode')) {
+                setCookie('darkMode', 'true');
+                darkModeIcon.classList.replace('bi-moon', 'bi-sun');
+              } else {
+                setCookie('darkMode', 'false');
+                darkModeIcon.classList.replace('bi-sun', 'bi-moon');
+              }
+            });
+          
+            // Cookie functions
+            function setCookie(name, value) {
+              const expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
+              document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+            }
+          
+            function getCookie(name) {
+              const cookies = document.cookie.split('; ');
+              for (const cookie of cookies) {
+                const [key, value] = cookie.split('=');
+                if (key === name) {
+                  return value;
+                }
+              }
+              return null;
+            }
+          </script>
+        <script>
+            $(document).ready(function() {
+                $('#generateScript').click(function() {
+                    var formCode = $('#formCode').val();
+                    var $form = $(formCode).filter('form').length ? $(formCode).filter('form') : $(formCode).find('form');
+                    var formId = $form.attr('id');
+                    var formSelector = formId ? '#' + formId : 'form';
+     // Add spinner to button
+  $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Generating...');
+
+  // Animate button click
+  $(this).animate({
+    opacity: 0.5
+  }, 1000, function() {
+                    var rules = {};
+                    var messages = {};
+                    var nameMissing = false;
+                    var customMethods = new Set();
+    
+                    $form.find('input, select, textarea').each(function() {
+                        var fieldType = $(this).attr('type');
+                        var fieldName = $(this).attr('name');
+    
+                        if (!fieldName) {
+                            nameMissing = true;
+                            return false; // Exit each loop
+                        }
+    
+                        if (fieldType !== 'hidden' && fieldType !== 'submit') {
+                            var ruleObj = { required: true };
+                            var messageObj = { required: fieldName.charAt(0).toUpperCase() + fieldName.slice(1) + " is required." };
+    
+                            if (fieldType === 'checkbox' || fieldType === 'radio') {
+                                rules[fieldName] = ruleObj;
+                                messages[fieldName] = messageObj;
+                            } else {
+                                if (fieldName.toLowerCase().includes('name')) {
+                                    ruleObj.minlength = 5;
+                                    ruleObj.noNumbers = true;
+                                    customMethods.add('$.validator.addMethod("noNumbers", function(value, element) { return this.optional(element) || /^[a-zA-Z]+$/.test(value); }, "No numbers allowed.");');
+                                    messageObj.minlength = fieldName.charAt(0).toUpperCase() + fieldName.slice(1) + " must be greater than 5 characters.";
+                                    messageObj.noNumbers = fieldName.charAt(0).toUpperCase() + fieldName.slice(1) + " cannot contain numbers.";
+                                } else if (fieldName.toLowerCase().includes('phone') || fieldName.toLowerCase().includes('number') || fieldName.toLowerCase().includes('mobile')) {
+                                    ruleObj.digits = true;
+                                    messageObj.digits = fieldName.charAt(0).toUpperCase() + fieldName.slice(1) + " must be a number.";
+                                } else if (fieldName.toLowerCase().includes('email')) {
+                                    ruleObj.email = true;
+                                    messageObj.email = "Please enter a valid " + fieldName.toLowerCase() + ".";
+                                } else if (fieldName.toLowerCase().includes('url')) {
+                                    ruleObj.url = true;
+                                    messageObj.url = "Please enter a valid URL.";
+                                } else if (fieldName.toLowerCase().includes('message')) {
+                                    ruleObj.noHtml = true;
+                                    customMethods.add('$.validator.addMethod("noHtml", function(value, element) { return this.optional(element) || /^[^<>]+$/.test(value); }, "HTML tags are not allowed.");');
+                                    messageObj.noHtml = fieldName.charAt(0).toUpperCase() + fieldName.slice(1) + " must not contain HTML tags.";
+                                }
+    
+                                rules[fieldName] = ruleObj;
+                                messages[fieldName] = messageObj;
+                            }
+                        }
+                    });
+                    
+    
+                    if (nameMissing) {
+                        $('#alertPlaceholder').html(`
+                            <div class="alert alert-danger" role="alert">
+                                Some form fields are missing the 'name' attribute.
+                            </div>
+                        `);
+                    } else {
+                        var rulesString = Object.entries(rules).map(([key, value]) => `${key}: ${JSON.stringify(value).replace(/"([^"]+)":/g, '$1:')}`).join(',\n');
+                        var messagesString = Object.entries(messages).map(([key, value]) => `${key}: {${Object.entries(value).map(([k, v]) => `${k}: "${v}"`).join(', ')}}`).join(',\n');
+    
+                        var validationScript = `${formSelector}.validate({
+                            rules: {
+                                ${rulesString}
+                            },
+                            messages: {
+                                ${messagesString}
+                            }
+                        });`;
+    
+                        $('#validationScript').val(validationScript);
+                        $('#customMethods').val([...customMethods].join('\n'));
+                        $('#alertPlaceholder').empty(); // Clear any previous alerts
+                    }
+                    $(this).html('Generate Validation Script');
+                    $(this).animate({
+                    opacity: 1
+                    }, 1000);
+
+                    });
+                
+                    });
+    
+                $('#copyScript').click(function() {
+                    var copyText = $('#validationScript');
+                    copyText.select();
+                    document.execCommand("copy");
+                    $('#alertPlaceholder').html(`
+                        <div class="alert alert-success" role="alert">
+                            Validation script copied to clipboard successfully!
+                        </div>
+                    `);
+                });
+            });
+        </script>
+    </body>
+</html>
